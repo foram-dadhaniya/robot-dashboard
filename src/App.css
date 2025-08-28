@@ -1,8 +1,8 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  width: 100%;
+  padding: 0;
+  margin: auto;
 }
 
 .logo {
@@ -39,4 +39,28 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* global css */
+main{
+  margin-top: 75px;
+  padding: 15px;
+  height: 100vh;
+}
+
+main .card{
+  background-color: #e0eef6;
+      border: unset;
+    padding: 5px;
+}
+
+main .card p{
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+main .card .card-title{
+  color: var(--dark-color);
+  font-size: 1rem;
 }

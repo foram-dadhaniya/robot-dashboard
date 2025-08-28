@@ -5,17 +5,24 @@ export const AuthPage = styled.div`
     width: 500px;
     padding: 2.5rem;
     background: var(--light-color);
+    margin: auto;
 `
 
-export const Logo = styled.div`
-    background: var(--primary-color);
-    padding: 10px;
+export const LogoImg = styled.div`
+    background: var(--secondary-color);
+    padding: 6px;
     border-radius: 50%;
     width: max-content;
-    margin: 0 auto 1rem auto;
+    margin: 0 auto;
 `
+export const CustomFloatingLabel = styled(FloatingLabel)`
+  > label {
+    padding-left: 0 !important;
+  }
+`;
+
 export const CustomFormControl = styled((Form.Control))`
-    padding: 0.5rem;
+    padding-left: 4px !important;
     background: unset;
     border-width: 0 0 1px 0;
     border-radius: 0;
@@ -27,7 +34,7 @@ export const CustomFormControl = styled((Form.Control))`
 `
 
 export const Button = styled.button`
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     width: 100%;
     border-radius: 0.375rem;
 `
