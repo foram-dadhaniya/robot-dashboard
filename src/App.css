@@ -64,3 +64,13 @@ main .card .card-title{
   color: var(--dark-color);
   font-size: 1rem;
 }
+
+/* table css */
+.sort-icon span{
+  color: #ccc;
+  margin-left: 2px;
+}
+.sort-icons .active {
+  color: blue;
+  font-weight: bold;
+}
