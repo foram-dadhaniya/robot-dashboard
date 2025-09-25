@@ -6,10 +6,11 @@ export const AuthPage = styled.div`
     padding: 2.5rem;
     background: var(--light-color);
     margin: auto;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.025);
 `
 
 export const LogoImg = styled.div`
-    background: var(--secondary-color);
+    background: var(--light-color);
     padding: 6px;
     border-radius: 50%;
     width: max-content;

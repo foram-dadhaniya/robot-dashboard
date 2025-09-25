@@ -12,11 +12,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --primary-color: #40738d;
-  --secondary-color: #8cd194;
+  --primary-color: #5856b3;
+  --secondary-color: #ffabab;
   --light-color: #f1f5f9;
   --dark-color: #191a1b;
   --white-color: #fff;
+  --color-lightshade-1: #f4f4fe;
+  --color-lightshade-2: #f7edfc;
+  --color-lightshade-3: #fcecf1;
+  --color-lightshade-4: #dcfff2;
+  --color-darkshade-1:#817ce6;
+  --color-darkshade-2: #c17cdc;
+  --color-darkshade-3: #e381a1;
+  --color-darkshade-4: #62d6ab;
 }
 
 a {
@@ -31,8 +39,6 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  /* place-items: center;
-  min-width: 320px; */
   min-height: 100vh;
 }
 
@@ -72,15 +78,3 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
-/* .primary-color{
-  color: #40738d;
-}
-
-.secondary-color{
-  color: #8cd194;
-}
-
-.light-bg{
-  color: #f1f5f9;
-} */

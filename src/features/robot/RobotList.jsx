@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo } from 'react'
 import { useTable, useSortBy, useGlobalFilter, useFilters } from 'react-table'
-import { StyledTable } from './RobotList.styles';
-import { FaEye, FaEdit, FaTrash } from "react-icons/fa";
+import { StyledTable, GlobalSearch, ColumnSearch, Action } from './RobotList.styles';
+import { FaEye, FaEdit, FaTrash, FaCaretUp, FaCaretDown } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteRobot, fetchRobotId, fetchRobots } from './robot.slice';
 import { useNavigate } from 'react-router-dom';
@@ -16,22 +16,21 @@ export const RobotList = () => {
 
   const GlobalColumnFilter = useCallback( ({filter, setFilter}) => {
     return (
-        <input
+        <GlobalSearch
             value={filter || ""}
             onChange={(e) => setFilter(e.target.value || undefined)}
             placeholder='Search'
-            style={{width:"100%", padding:"4px"}}
-        ></input>
+        ></GlobalSearch>
     )
   }, [])
 
   const ColumnFilter = useCallback(({ column: {filter, setFilter}}) => {
     return (
-        <input
+        <ColumnSearch
             value={filter || ""}
             onChange={(e) => setFilter(e.target.value || undefined)}
             placeholder='Search'
-        ></input>
+        ></ColumnSearch>
     )
   }, [])
  
@@ -45,26 +44,23 @@ export const RobotList = () => {
     {Header: "Actions", Cell: ({row}) => {
         const id = row.original.id;
         return(
-            <div style={{ display: "flex", gap: "10px" }}>
+            <Action>
             <FaEye
-              style={{ cursor: "pointer", color: "#40738d" }}
               onClick={() => {
                 dispatch(fetchRobotId(id));
                 navigate(`/robot/${id}`);
             }}
             />
             <FaEdit
-              style={{ cursor: "pointer", color: "#40738d" }}
               onClick={() => {
                 dispatch(fetchRobotId(id));
                 navigate(`/robot/${id}/edit`);
               }}
             />
             <FaTrash
-              style={{ cursor: "pointer", color: "#40738d" }}
               onClick={() => dispatch(deleteRobot(id))}
             />
-          </div>
+          </Action>
         )
         
 }}
@@ -80,50 +76,62 @@ export const RobotList = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <>
-         <GlobalColumnFilter filter={globalFilter} setFilter={setGlobalFilter} />
-    <StyledTable {...getTableProps()}>
-        <thead>
-            {headerGroups.map((hg) => { 
-                const {key, ...restHgProps} = hg.getHeaderGroupProps();
-                return(
-                    <tr key={key} {...restHgProps}>
-                    {hg.headers.map((col) => {
-                        const { key: colKey, ...restColProps } = col.getHeaderProps(col.getSortByToggleProps());
-                        return(
-                        <th key={colKey} {...restColProps}>
-                            <div className='d-flex justify-content-between'>
-                                <span>{col.render("Header")}</span>
-                                <span className='sort-icons'>
-                                    <span className={col.isSorted && !col.isSortedDesc ? "active" : ""}>▼</span>
-                                    <span className={col.isSorted && col.isSortedDesc ? "active" : ""}>▲</span>
-                                </span>
-                            </div>
-                            {col.canFilter ? col.render("Filter") : null }
-                        </th>
-                    )
-                    })}
-                </tr>
-                )
-        })}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-            {rows.map(row => {
-                prepareRow(row);
-                const { key, ...restRowProps } = row.getRowProps()
-                return(
-                    <tr key={key} {...restRowProps}>
-                        {row.cells.map(cell => {
-                            const { key, ...restCellProps } = cell.getCellProps()
+    <div className='card'>
+      <div className='card-header'>
+        <h5 className='mb-0'>Robots</h5>
+      </div>
+      <div className='card-body'>
+        <GlobalColumnFilter filter={globalFilter} setFilter={setGlobalFilter} />
+        <StyledTable {...getTableProps()}>
+            <thead>
+                {headerGroups.map((hg) => { 
+                    const {key, ...restHgProps} = hg.getHeaderGroupProps();
+                    return(
+                        <tr key={key} {...restHgProps}>
+                        {hg.headers.map((col) => {
+                            const { key: colKey, ...restColProps } = col.getHeaderProps(col.getSortByToggleProps());
                             return(
-                            <td key={key} {...restCellProps}>{cell.render("Cell")}</td>
+                            <th key={colKey} {...restColProps}>
+                                <div className='d-flex justify-content-between'>
+                                    <span>{col.render("Header")}</span>
+                                    <span className="sort-icons">
+                                      <span className={col.isSorted && !col.isSortedDesc ? "active" : ""}>
+                                        <FaCaretUp />
+                                      </span>
+                                      <span className={col.isSorted && col.isSortedDesc ? "active" : ""}>
+                                        <FaCaretDown />
+                                      </span>
+                                    </span>
+                                </div>
+                                <div>
+                                  {col.canFilter ? col.render("Filter") : null }
+                                </div>
+                            </th>
                         )
                         })}
                     </tr>
-                )
+                    )
             })}
-        </tbody>
-    </StyledTable>
-    </>
+            </thead>
+            <tbody {...getTableBodyProps()}>
+                {rows.map(row => {
+                    prepareRow(row);
+                    const { key, ...restRowProps } = row.getRowProps()
+                    return(
+                        <tr key={key} {...restRowProps}>
+                            {row.cells.map(cell => {
+                                const { key, ...restCellProps } = cell.getCellProps()
+                                return(
+                                <td key={key} {...restCellProps}>{cell.render("Cell")}</td>
+                            )
+                            })}
+                        </tr>
+                    )
+                })}
+            </tbody>
+        </StyledTable>
+      </div>
+        
+    </div>
   )
 }

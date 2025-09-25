@@ -60,26 +60,63 @@ if (loading || !selectedRobot) {
 }
   if(!selectedRobot) return <p>No robot selected</p>
   return (
-    <>
-        {isEditMode ? 
-        (<form onSubmit={handleSubmit}>
-            <label>Robot ID</label>
+    <div className='row'>
+      <div className='col-6'>
+           {isEditMode ? 
+        (<div className='card'>
+          <div className='card-header'>
+            <h5 className='mb-0'>Edit RobotDetails</h5>
+            </div>
+            <div className='card-body'>
+
+            <form onSubmit={handleSubmit}>
+          <div class="mb-3 row">
+            <label className='col-sm-3 col-form-label'>Robot Name</label>
+            <div class="col-sm-9">
             <input type='text' name='robotName' value={formData.robotName} onChange={handleChange}></input>
-            <input type='text' name='ownerName' value={formData.ownerName} onChange={handleChange}></input>
-            <input type='text' name='location' value={formData.location} onChange={handleChange}></input>
-            <input type='text' name='firmwareVersion' value={formData.firmwareVersion} onChange={handleChange}></input>
-            <button type='submit'>Save</button>
-        </form>) : 
-        (<div>
-            <h2>RobotDetails</h2>
-            <p>Robot ID: {selectedRobot.id}</p>
-            <p>Robot Name: {selectedRobot.robotName}</p>
-            <p>Owner: {selectedRobot.ownerName}</p>
-            <p>Location: {selectedRobot.location}</p>
-            <p>Last Active: {selectedRobot.lastActive}</p>
-            <p>Firmware Version: {selectedRobot.firmwareVersion}</p>
+            </div>
+          </div>
+            <div class="mb-3 row">
+              <label className='col-sm-3 col-form-label'>Owner Name</label>
+              <div class="col-sm-9">
+                <input type='text' name='ownerName' value={formData.ownerName} onChange={handleChange}></input>
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label className='col-sm-3 col-form-label'>Location</label>
+              <div class="col-sm-9">
+                            <input type='text' name='location' value={formData.location} onChange={handleChange}></input>
+
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label className='col-sm-3 col-form-label'>Firmware Version</label>
+              <div class="col-sm-9">
+                <input type='text' name='firmwareVersion' value={formData.firmwareVersion} onChange={handleChange}></input>
+              </div>
+            </div>
+            
+            <button type='submit' className='btn-save'>Save</button>
+        </form>
+        </div>
+          </div>
+      ) : 
+        (<div className='card'>
+          <div className='card-header'>
+            <h5 className='mb-0'>RobotDetails</h5>
+          </div>
+          <div className='card-body'>
+             <p><b>Robot ID:</b> {selectedRobot.id}</p>
+            <p><b>Robot Name:</b> {selectedRobot.robotName}</p>
+            <p><b>Owner:</b> {selectedRobot.ownerName}</p>
+            <p><b>Location:</b> {selectedRobot.location}</p>
+            <p><b>Last Active:</b> {selectedRobot.lastActive}</p>
+            <p><b>Firmware Version:</b> {selectedRobot.firmwareVersion}</p>
+          </div>
         </div>)
     }
-    </>
+      </div>
+       
+    </div>
   )
 }

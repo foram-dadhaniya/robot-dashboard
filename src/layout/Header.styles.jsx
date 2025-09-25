@@ -16,11 +16,11 @@ export const HeaderMenu = styled.div`
         color: var(--dark-color);
         font-weight: 400;
         &:hover{
-            color: var(--secondary-color);
+            color: var(--primary-color);
         }
     }
     .nav-link.active{
-        background-color: var(--secondary-color);
+        background-color: var(--primary-color);
         border-radius: 30px;
         color: var(--white-color);
     }

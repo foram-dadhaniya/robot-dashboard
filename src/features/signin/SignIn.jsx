@@ -47,6 +47,7 @@ export const SignIn = () => {
             </CustomFloatingLabel>
             <CustomFloatingLabel label="Password" className='mb-4'>
                 <CustomFormControl
+                    type="password"
                     name="password"
                     placeholder="Password"
                     value={formik.values.password}

@@ -10,22 +10,23 @@ main{
   margin-top: 75px;
   padding: 15px;
   height: 100vh;
-}
-
-main .card{
+  .dashboard{
+    .card{
       border: unset;
     padding: 5px;
-}
-
-main .card p{
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.025);
+    p{
     font-weight: 600;
     font-size: 1.5rem;
 }
-
-main .card .card-title{
+.card-title{
   color: var(--dark-color);
   font-size: 1rem;
 }
+}
+  }
+}
+
 
 .card-lightshade-1{
   background-color: var(--color-lightshade-1) !important;
@@ -48,20 +49,26 @@ main .card .card-title{
   }
 }
 
-.card-lightshade-4{
+.card-lightshade-4 {
   background-color: var(--color-lightshade-4) !important;
-  p{
-  color: var(--color-darkshade-4) !important;
+  p {
+    color: var(--color-darkshade-4) !important;
   }
 }
 
+input{
+   border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    height: 35px;
+    padding: 10px;
+    background-color: unset;
+    width: 100%;
+    color: black;
+}
 
-/* table css */
-.sort-icon span{
-  color: #ccc;
-  margin-left: 2px;
+.btn-save{
+  background-color: var(--primary-color);
+  border-radius: 5px;
 }
-.sort-icons .active {
-  color: blue;
-  font-weight: bold;
-}
+
+
