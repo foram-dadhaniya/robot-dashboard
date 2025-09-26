@@ -32,6 +32,17 @@ export const CustomFormControl = styled((Form.Control))`
         border-color: var(--secondary-color);
         box-shadow: unset;
     }
+   &:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px var(--light-color) inset !important; /* sets background */
+  -webkit-box-shadow: 0 0 0px 1000px var(--light-color) inset !important;
+  -webkit-text-fill-color: #000 !important; /* text color */
+  transition: background-color 5000s ease-in-out 0s; /* remove yellow flash */
+}
+
+&:-webkit-autofill:focus {
+  box-shadow: 0 0 0px 1000px var(--light-color) inset !important;
+  -webkit-text-fill-color: #000 !important;
+}
 `
 
 export const Button = styled.button`

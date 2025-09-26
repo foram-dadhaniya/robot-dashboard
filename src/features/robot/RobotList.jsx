@@ -35,13 +35,13 @@ export const RobotList = () => {
   }, [])
  
   const columns = useMemo(() => [
-    {Header: "ID", accessor: 'id', Filter: ColumnFilter},
+    {Header: "ID", accessor: 'id', Filter: ColumnFilter, disableSortBy: true},
     {Header: "Robot Name", accessor: 'robotName', Filter: ColumnFilter},
     {Header: "Owner Name", accessor: 'ownerName', Filter: ColumnFilter},
     {Header: "Location", accessor: 'location', Filter: ColumnFilter},
     {Header: "Last Active", accessor: 'lastActive', Filter: ColumnFilter},
     {Header: "Firmware Version", accessor: 'firmwareVersion', Filter: ColumnFilter},
-    {Header: "Actions", Cell: ({row}) => {
+    {Header: "Actions", disableSortBy: true, Cell: ({row}) => {
         const id = row.original.id;
         return(
             <Action>
@@ -89,19 +89,23 @@ export const RobotList = () => {
                     return(
                         <tr key={key} {...restHgProps}>
                         {hg.headers.map((col) => {
-                            const { key: colKey, ...restColProps } = col.getHeaderProps(col.getSortByToggleProps());
+                            const { key: colKey, ...restColProps } = col.getHeaderProps();
                             return(
                             <th key={colKey} {...restColProps}>
-                                <div className='d-flex justify-content-between'>
-                                    <span>{col.render("Header")}</span>
-                                    <span className="sort-icons">
-                                      <span className={col.isSorted && !col.isSortedDesc ? "active" : ""}>
-                                        <FaCaretUp />
-                                      </span>
-                                      <span className={col.isSorted && col.isSortedDesc ? "active" : ""}>
-                                        <FaCaretDown />
-                                      </span>
-                                    </span>
+                                <div>
+                                    <div {...col.getSortByToggleProps()} className='d-flex justify-content-between' >
+                                      <div>{col.render("Header")}</div>
+                                      {!col.disableSortBy && (
+                                           <div className="sort-icons">
+                                        <span className={col.isSorted && !col.isSortedDesc ? "active" : ""}>
+                                          <FaCaretUp />
+                                        </span>
+                                        <span className={col.isSorted && col.isSortedDesc ? "active" : ""}>
+                                          <FaCaretDown />
+                                        </span>
+                                      </div>
+                                      )}
+                                    </div>
                                 </div>
                                 <div>
                                   {col.canFilter ? col.render("Filter") : null }
