@@ -68,7 +68,7 @@ const robotSlice = createSlice({
             state.loading = true;
         })
         .addCase(editRobot.fulfilled, (state, action) => {
-            const index = state.data.findIndex((robot) => String(robot.id) === String(action.payload.id));
+            const index = state.data.findIndex((robot) => (robot.id) === action.payload.id);
             if(index !== -1){
                 state.data[index] = action.payload;
             }

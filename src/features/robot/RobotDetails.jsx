@@ -70,28 +70,28 @@ if (loading || !selectedRobot) {
             <div className='card-body'>
 
             <form onSubmit={handleSubmit}>
-          <div class="mb-3 row">
+          <div className="mb-3 row">
             <label className='col-sm-3 col-form-label'>Robot Name</label>
-            <div class="col-sm-9">
+            <div className="col-sm-9">
             <input type='text' name='robotName' value={formData.robotName} onChange={handleChange}></input>
             </div>
           </div>
-            <div class="mb-3 row">
+            <div className="mb-3 row">
               <label className='col-sm-3 col-form-label'>Owner Name</label>
-              <div class="col-sm-9">
+              <div className="col-sm-9">
                 <input type='text' name='ownerName' value={formData.ownerName} onChange={handleChange}></input>
               </div>
             </div>
-            <div class="mb-3 row">
+            <div className="mb-3 row">
               <label className='col-sm-3 col-form-label'>Location</label>
-              <div class="col-sm-9">
+              <div className="col-sm-9">
                             <input type='text' name='location' value={formData.location} onChange={handleChange}></input>
 
               </div>
             </div>
-            <div class="mb-3 row">
+            <div className="mb-3 row">
               <label className='col-sm-3 col-form-label'>Firmware Version</label>
-              <div class="col-sm-9">
+              <div className="col-sm-9">
                 <input type='text' name='firmwareVersion' value={formData.firmwareVersion} onChange={handleChange}></input>
               </div>
             </div>
